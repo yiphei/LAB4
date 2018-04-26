@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import React from 'react';
-import Switch from 'react-draggable';
+import Switch from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './style.scss';
 
