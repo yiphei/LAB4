@@ -11,13 +11,25 @@ const Welcome = (props) => {
   return <div>Welcome</div>;
 };
 
+const Test = (props) => {
+  return <div> ID: {props.match.params.id} </div>;
+};
+
+const FallBack = (props) => {
+  return <div>URL Not Found</div>;
+};
+
 const App = (props) => {
   return (
     <Router>
       <div>
         <Nav />
-        <Route exact path="/" component={Welcome} />
-        <Route path="/about" component={About} />
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/about" component={About} />
+          <Route exact path="/test/:id" component={Test} />
+          <Route component={FallBack} />
+        </Switch>
       </div>
     </Router>
   );
@@ -29,6 +41,8 @@ const Nav = (props) => {
       <ul>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/test/id1">test id1</NavLink></li>
+        <li><NavLink to="/test/id2">test id2</NavLink></li>
       </ul>
     </nav>
   );
