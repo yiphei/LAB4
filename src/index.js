@@ -1,22 +1,37 @@
-import $ from 'jquery';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './style.scss';
 
-let num = 0;
 
-// setInterval(function() => {
-//   num = num + 1;
-//   console.log('hello');
-//
-//   $('#main').html('You have been here for ${num} seconds..');
-//
-//    }, 1000);
+const About = (props) => {
+  return <div> All there is to know about me </div>;
+};
+const Welcome = (props) => {
+  return <div>Welcome</div>;
+};
 
+const App = (props) => {
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/about" component={About} />
+      </div>
+    </Router>
+  );
+};
 
-setInterval(() => {
-  num += 1;
-  console.log(num);
-  console.log('hello');
-  const a = `You have been here for ${num} seconds..`;
+const Nav = (props) => {
+  return (
+    <nav>
+      <ul>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+      </ul>
+    </nav>
+  );
+};
 
-  $('#main').html(a);
-}, 1000);
+ReactDOM.render(<App />, document.getElementById('main'));

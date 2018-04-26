@@ -5,10 +5,7 @@ body, html {
   width: 20%;
 }
 
-.logo {
-  background-image: url('img/monalisa.jpg');
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: contain;
+
+.active {
+  color: pink;
 }
