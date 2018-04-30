@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import React from 'react';
 
 const Nav = (props) => {
+  console.log('NAVBAR');
   return (
     <nav>
       <ul>

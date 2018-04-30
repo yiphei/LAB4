@@ -29,6 +29,7 @@ class NewPost extends Component {
     this.setState({ coverURL: event.target.value });
   }
 
+
   render() {
     return (
       <div>

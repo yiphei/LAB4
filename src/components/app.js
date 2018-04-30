@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
-import Immutable from 'immutable';
 import '../style.scss';
 import Nav from './navbar';
 import Posts from './posts';
@@ -26,16 +25,10 @@ import NewPost from './newpost';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      posts: Immutable.Map(),
-    };
   }
 
-  // componentDidMount = () => {
-  //
-  // };
   render() {
+    console.log('APP');
     return (
       <Router>
         <div>
