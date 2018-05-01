@@ -24,6 +24,8 @@ const PostsReducer = (state = initialState, action) => {
     case ActionTypes.FETCH_POST:
       const post = action.payload;
       return Object.assign({}, state, { post });
+    case ActionTypes.CREATE_POST:
+      return null;
     default:
       return state;
   }

@@ -4,28 +4,6 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 import { fetchPosts } from '../actions/index';
 
-
-// const Posts = (props) => {
-//   return (
-//     <p> All the posts</p>
-//   );
-// };
-//
-//
-// // componentDidMount = () => {
-// //
-// // };
-//
-//
-// const mapStateToProps = state => (
-//   {
-//     posts: state.posts.all,
-//   }
-// );
-//
-// export default withRouter(connect(mapStateToProps, null)(Posts));
-// // export default Posts;
-
 class Posts extends Component {
   constructor(props) {
     super(props);

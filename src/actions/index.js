@@ -9,9 +9,29 @@ export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
   FETCH_POST: 'FETCH_POST',
   // UPDATE_POST: 'UPDATE_POST',
-  // CREATE_POST: 'CREATE_POST',
+  CREATE_POST: 'CREATE_POST',
   // DELETE_POST: 'DELETE_POST',
 };
+
+
+export function createPost(fields) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/posts${API_KEY}`, fields).then((response) => {
+      // do something with response.data  (some json)
+      dispatch({
+        type: ActionTypes.CREATE_POST,
+        payload: null,
+      });
+    }).catch((error) => {
+      // hit an error do something else!
+      console.log('error');
+      dispatch({
+        type: ActionTypes.CREATE_POST,
+        payload: null,
+      });
+    });
+  };
+}
 
 
 export function fetchPosts() {
@@ -40,16 +60,19 @@ export function fetchPost(id) {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`).then((response) => {
       // do something with response.data  (some json)
-      const posts = response.data;
+      const post = response.data;
+      console.log(post);
+      console.log('AAAA');
       dispatch({
-        type: ActionTypes.FETCH_POSTS,
-        payload: posts,
+        type: ActionTypes.FETCH_POST,
+        payload: post,
       });
     }).catch((error) => {
       // hit an error do something else!
       console.log('error');
+      console.log('BBBBB');
       dispatch({
-        type: ActionTypes.FETCH_POSTS,
+        type: ActionTypes.FETCH_POST,
         payload: null,
       });
     });

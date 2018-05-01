@@ -6,22 +6,6 @@ import Posts from './posts';
 import Post from './post';
 import NewPost from './newpost';
 
-
-// const Welcome = (props) => {
-//   return (<div>
-//     <div>Welcome</div>
-//     <Controls />
-//     <Counter />
-//           </div>);
-// };
-
-// const Test = (props) => {
-//   return <div> ID: {props.match.params.id} </div>;
-// };
-
-// const FallBack = (props) => {
-//   return <div>URL Not Found</div>;
-// };
 class App extends Component {
   constructor(props) {
     super(props);
