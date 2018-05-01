@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
-
 import { fetchPosts } from '../actions/index';
+import marked from 'marked';
+
 
 class Posts extends Component {
   constructor(props) {
@@ -19,18 +20,24 @@ class Posts extends Component {
   mapping = () => {
     return this.props.posts.map((post) => {
       return (
-        <div className="postDetail">
-          <p onClick={this.onPostClick}><NavLink to={`/posts/${post.id}`}>{post.title}</NavLink></p>
-          <p>{post.tags}</p>
-        </div>
+        <NavLink to={`/posts/${post.id}`}>
+          <div className="postDetail" onClick={this.onPostClick}>
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.cover_url || '') }} />
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
+          </div>
+        </NavLink>
       );
     });
   }
 
   render() {
     return (
-      <div>
-        {this.mapping()}
+      <div className="postComponent">
+        <h1>Posts</h1>
+        <div className="postSection">
+          {this.mapping()}
+        </div>
       </div>
     );
   }

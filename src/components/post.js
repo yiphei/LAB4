@@ -1,7 +1,9 @@
+import marked from 'marked';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { fetchPost, deletePost, updatePost } from '../actions/index';
+
 
 class Post extends Component {
   constructor(props) {
@@ -18,20 +20,14 @@ class Post extends Component {
 
   componentDidMount = () => {
     this.props.fetchPost(this.props.match.params.postID);
-    this.setState({
-      title: this.props.post.title,
-      content: this.props.post.content,
-      tags: this.props.post.tags,
-      coverURL: this.props.post.cover_url,
-    });
   };
 
   onDeleteClick = () => {
     this.props.deletePost(this.props.match.params.postID, this.props.history);
   }
 
-  onSubmitClick = () => {
-    console.log('SUBMITTED');
+  onUpdateClick = () => {
+    console.log('updated');
     this.setState({ isEditing: false });
     const fields = {
       title: this.state.title, tags: this.state.tags, content: this.state.content, cover_url: this.state.coverURL,
@@ -39,8 +35,14 @@ class Post extends Component {
     this.props.updatePost(this.props.match.params.postID, fields);
   }
 
-  onUpdateClick = () => {
+  onEditClick = () => {
     this.setState({ isEditing: true });
+    this.setState({
+      title: this.props.post.title,
+      content: this.props.post.content,
+      tags: this.props.post.tags,
+      coverURL: this.props.post.cover_url,
+    });
   }
 
   onTitleChange = (event) => {
@@ -62,32 +64,38 @@ class Post extends Component {
   renderPostBox = () => {
     if (!this.state.isEditing) {
       return (
-        <div>
-          <button onClick={this.onDeleteClick}>DELETE</button>
-          <button onClick={this.onUpdateClick}>UPDATE</button>
-          <h2>Title</h2>
-          <p>{this.props.post.title}</p>
-          <h2>Content</h2>
-          <p>{this.props.post.content}</p>
-          <h2>Tags</h2>
-          <p>{this.props.post.tags}</p>
-          <h2>Cover url</h2>
-          <p>{this.props.post.cover_url}</p>
+        <div className="singlePost-detail">
+          <div className="top-bar">
+            <div><NavLink exact to="/">Back to index</NavLink></div>
+            <div className="functions">
+              <button className="editB" onClick={this.onEditClick}>Edit</button>
+              <button className="deleteB" onClick={this.onDeleteClick}>Delete</button>
+            </div>
+          </div>
+          <div className="singlePostbody">
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.cover_url || '') }} />
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
+            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />
+          </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <button onClick={this.onDeleteClick}>DELETE</button>
-          <button onClick={this.onSubmitClick}>SUBMIT</button>
-          <h2>Title</h2>
-          <input onChange={this.onTitleChange} value={this.state.title} />
-          <h2>Content</h2>
-          <input onChange={this.onContentChange} value={this.state.content} />
-          <h2>Tags</h2>
-          <input onChange={this.onTagsChange} value={this.state.tags} />
-          <h2>Cover url</h2>
-          <input onChange={this.onCoverURLChange} value={this.state.coverURL} />
+        <div className="singlePost-detail">
+          <div className="top-bar">
+            <div><NavLink exact to="/">Back to index</NavLink></div>
+            <div className="functions">
+              <button className="editB" onClick={this.onUpdateClick}>Update</button>
+              <button className="deleteB" onClick={this.onDeleteClick}>Delete</button>
+            </div>
+          </div>
+          <div className="singlePostbody">
+            <input className="edit-element" onChange={this.onCoverURLChange} value={this.state.coverURL} />
+            <input className="edit-element" onChange={this.onTitleChange} value={this.state.title} />
+            <input className="edit-element" onChange={this.onContentChange} value={this.state.content} />
+            <input className="edit-element" onChange={this.onTagsChange} value={this.state.tags} />
+          </div>
         </div>
       );
     }

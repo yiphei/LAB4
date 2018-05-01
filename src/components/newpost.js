@@ -33,25 +33,23 @@ class NewPost extends Component {
   }
 
   onButtonClick = () => {
-    const fields = {
-      title: this.state.title, tags: this.state.tags, content: this.state.content, cover_url: this.state.coverURL,
-    };
-    this.props.createPost(fields, this.props.history);
+    if (this.state.title) {
+      const fields = {
+        title: this.state.title, tags: this.state.tags, content: this.state.content, cover_url: this.state.coverURL,
+      };
+      this.props.createPost(fields, this.props.history);
+    }
   }
 
   render() {
     return (
-      <div>
-        <h1>Create a new POST </h1>
-        <h2>Title</h2>
-        <input onChange={this.onTitleChange} value={this.state.title} />
-        <h2>Content</h2>
-        <input onChange={this.onContentChange} value={this.state.content} />
-        <h2>Tags</h2>
-        <input onChange={this.onTagsChange} value={this.state.tags} />
-        <h2>Cover url</h2>
-        <input onChange={this.onCoverURLChange} value={this.state.coverURL} />
-        <button onClick={this.onButtonClick}>CREATE NEW POST</button>
+      <div className="newpost-section">
+        <h1>Create a new post</h1>
+        <input onChange={this.onTitleChange} value={this.state.title} placeholder="title" />
+        <input onChange={this.onContentChange} value={this.state.content} placeholder="content" />
+        <input onChange={this.onTagsChange} value={this.state.tags} placeholder="tags" />
+        <input onChange={this.onCoverURLChange} value={this.state.coverURL} placeholder="cover_url" />
+        <button onClick={this.onButtonClick}>SUBMIT</button>
       </div>
     );
   }
