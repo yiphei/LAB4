@@ -3,11 +3,22 @@ body, html {
   background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
   height: 100%;
   text-decoration: none;
+  background-size: cover;
 }
 
-// .active {
-//   color: pink;
-// }
+img {
+  display: block;
+  max-width:300px;
+  max-height:230px;
+  // min-height: 230px;
+  // min-width: 300px;
+  width: auto;
+  height: auto;
+}
+
+.active {
+  color: pink;
+}
 
 //newpost component
 .newpost-section{
@@ -51,9 +62,28 @@ body, html {
   border-style: solid;
   border-radius: 10px;
   border-width: 5px;
+  text-decoration: none;
 
-  .post-element{
+  .post-title{
     text-decoration: none;
+    margin:1px;
+    font-size: 25px;
+    margin-left: 15px;
+
+    h1,h2,h3,h4,h5,h6{
+      margin:0;
+    }
+  }
+
+  .post-tags{
+    text-decoration: none;
+    margin:1px;
+    font-size: 15px;
+    margin-left: 15px;
+
+    h1,h2,h3,h4,h5,h6{
+      margin:0;
+    }
   }
 }
 
@@ -118,6 +148,18 @@ body, html {
     .edit-element{
       margin: 10px;
     }
+
+    .post-title{
+      font-size: 25px;
+    }
+
+    .post-content{
+      font-size: 18px;
+    }
+
+    .post-tags{
+      font-size: 14px;
+    }
   }
 
 
@@ -125,8 +167,6 @@ body, html {
 
 
 //navbar component
-
-
 .nav-bar{
   display: flex;
   flex-direction: row;
@@ -153,7 +193,6 @@ body, html {
     font-size: 30px;
     text-decoration: none;
     color: white;
-
   }
 }
 

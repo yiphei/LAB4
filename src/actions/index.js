@@ -105,9 +105,3 @@ export function fetchPost(id) {
     });
   };
 }
-
-// export function createPost(post, history) { /* axios post */ }
-//
-// export function updatePost(post) { /* axios put */ }
-//
-// export function deletePost(id, history) { /* axios delete */ }

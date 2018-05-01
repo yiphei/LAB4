@@ -73,10 +73,10 @@ class Post extends Component {
             </div>
           </div>
           <div className="singlePostbody">
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.cover_url || '') }} />
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />
+            <img src={this.props.post.cover_url} alt="a cover" />
+            <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />
+            <div className="post-content" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
+            <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />
           </div>
         </div>
       );
@@ -93,7 +93,7 @@ class Post extends Component {
           <div className="singlePostbody">
             <input className="edit-element" onChange={this.onCoverURLChange} value={this.state.coverURL} />
             <input className="edit-element" onChange={this.onTitleChange} value={this.state.title} />
-            <input className="edit-element" onChange={this.onContentChange} value={this.state.content} />
+            <textarea name="Text1" cols="40" rows="5" className="edit-element" onChange={this.onContentChange} value={this.state.content} />
             <input className="edit-element" onChange={this.onTagsChange} value={this.state.tags} />
           </div>
         </div>
@@ -120,3 +120,5 @@ const mapStateToProps = state => (
 );
 
 export default withRouter(connect(mapStateToProps, { fetchPost, deletePost, updatePost })(Post));
+
+// <input className="edit-element" onChange={this.onContentChange} value={this.state.content} />

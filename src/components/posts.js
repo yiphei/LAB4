@@ -14,20 +14,28 @@ class Posts extends Component {
     this.props.fetchPosts();
   };
 
-  onPostClick = () => {
-  }
-
   mapping = () => {
     return this.props.posts.map((post) => {
-      return (
-        <NavLink to={`/posts/${post.id}`}>
-          <div className="postDetail" onClick={this.onPostClick}>
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.cover_url || '') }} />
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
-            <div className="post-element" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
-          </div>
-        </NavLink>
-      );
+      if (post.cover_url) {
+        return (
+          <NavLink to={`/posts/${post.id}`}>
+            <div className="postDetail" onClick={this.onPostClick}>
+              <img src={post.cover_url} alt="a cover" />
+              <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
+              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
+            </div>
+          </NavLink>
+        );
+      } else {
+        return (
+          <NavLink to={`/posts/${post.id}`}>
+            <div className="postDetail" onClick={this.onPostClick}>
+              <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
+              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
+            </div>
+          </NavLink>
+        );
+      }
     });
   }
 
