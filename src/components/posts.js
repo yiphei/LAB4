@@ -14,7 +14,6 @@ class Posts extends Component {
   };
 
   onPostClick = () => {
-    console.log('CLICKED');
   }
 
   mapping = () => {
@@ -29,7 +28,6 @@ class Posts extends Component {
   }
 
   render() {
-    console.log('POSTSTST');
     return (
       <div>
         {this.mapping()}

@@ -25,7 +25,8 @@ const PostsReducer = (state = initialState, action) => {
       const post = action.payload;
       return Object.assign({}, state, { post });
     case ActionTypes.CREATE_POST:
-      return null;
+      const newpost = action.payload;
+      return Object.assign({}, state, { all: [...state.all, newpost] });
     default:
       return state;
   }
