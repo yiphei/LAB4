@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
-const API_KEY = '?key=yifei_yan';
-
+// const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 
 // // keys for actiontypes
 export const ActionTypes = {
@@ -16,7 +15,7 @@ export const ActionTypes = {
 
 export function updatePost(id, fields) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/posts/${id}${API_KEY}`, fields).then((response) => {
+    axios.put(`${ROOT_URL}/posts/${id}`, fields).then((response) => {
     // do something with response.data  (some json)
       console.log(response);
       const updated = response.data;
@@ -33,7 +32,7 @@ export function updatePost(id, fields) {
 
 
 export function deletePost(id, history) {
-  axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`).then((response) => {
+  axios.delete(`${ROOT_URL}/posts/${id}`).then((response) => {
     // do something with response.data  (some json)
     history.push('/');
   }).catch((error) => {
@@ -45,7 +44,7 @@ export function deletePost(id, history) {
 
 export function createPost(fields, history) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/posts${API_KEY}`, fields).then((response) => {
+    axios.post(`${ROOT_URL}/posts`, fields).then((response) => {
       // do something with response.data  (some json)
       const newpost = response.data;
       history.push('/');
@@ -67,7 +66,7 @@ export function createPost(fields, history) {
 
 export function fetchPosts() {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/posts${API_KEY}`).then((response) => {
+    axios.get(`${ROOT_URL}/posts`).then((response) => {
       // do something with response.data  (some json)
       const posts = response.data;
       dispatch({
@@ -88,7 +87,7 @@ export function fetchPosts() {
 
 export function fetchPost(id) {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`).then((response) => {
+    axios.get(`${ROOT_URL}/posts/${id}`).then((response) => {
       // do something with response.data  (some json)
       const post = response.data;
       dispatch({
