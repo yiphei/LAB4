@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
-const ROOT_URL = 'https://git.heroku.com/lab4cs52.git';
+const ROOT_URL = ' https://lab4cs52.herokuapp.com/api';
 
 // // keys for actiontypes
 export const ActionTypes = {
