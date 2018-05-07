@@ -18,7 +18,6 @@ export function updatePost(id, fields) {
     axios.put(`${ROOT_URL}/posts/${id}`, fields).then((response) => {
     // do something with response.data  (some json)
       console.log(response);
-      const updated = response.data;
       dispatch({
         type: ActionTypes.FETCH_POST,
         payload: fields, // i put fields here instead of const updated because the backend does not return the updated post
