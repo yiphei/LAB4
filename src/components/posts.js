@@ -18,7 +18,7 @@ class Posts extends Component {
     return this.props.posts.map((post) => {
       if (post.cover_url) {
         return (
-          <NavLink to={`/posts/${post.id}`}>
+          <NavLink to={`/posts/${post._id}`}>
             <div className="postDetail" onClick={this.onPostClick}>
               <img src={post.cover_url} alt="a cover" />
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
@@ -28,7 +28,7 @@ class Posts extends Component {
         );
       } else {
         return (
-          <NavLink to={`/posts/${post.id}`}>
+          <NavLink to={`/posts/${post._id}`}>
             <div className="postDetail" onClick={this.onPostClick}>
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
               <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />

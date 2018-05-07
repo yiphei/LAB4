@@ -21,7 +21,7 @@ export function updatePost(id, fields) {
       const updated = response.data;
       dispatch({
         type: ActionTypes.FETCH_POST,
-        payload: updated,
+        payload: fields, // i put fields here instead of const updated because the backend does not return the updated post
       });
     }).catch((error) => {
     // hit an error do something else!
