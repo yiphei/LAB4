@@ -19,9 +19,11 @@ class Nav extends Component {
         <nav>
           <ul className="nav-bar">
             <li><NavLink exact to="/" className="logo">NOTED</NavLink></li>
-            <li><NavLink to="/posts/new"><button className="newpost">Add post</button></NavLink></li>
-            <li><NavLink to="/signin"><button className="newpost">Sign in</button></NavLink></li>
-            <li><NavLink to="/signup"><button className="newpost">Sign up</button></NavLink></li>
+            <div className="nav-actions">
+              <li><NavLink to="/posts/new"><button className="newpost">Add post</button></NavLink></li>
+              <li><NavLink to="/signin"><button className="signin-button">Sign in</button></NavLink></li>
+              <li><NavLink to="/signup"><button className="signup-button">Sign up</button></NavLink></li>
+            </div>
           </ul>
         </nav>
       );
@@ -30,8 +32,10 @@ class Nav extends Component {
         <nav>
           <ul className="nav-bar">
             <li><NavLink exact to="/" className="logo">NOTED</NavLink></li>
-            <li><NavLink to="/posts/new"><button className="newpost">Add post</button></NavLink></li>
-            <li><button className="newpost" onClick={this.onClickSignOut}>Sign out</button></li>
+            <div className="nav-actions">
+              <li><NavLink to="/posts/new"><button className="newpost">Add post</button></NavLink></li>
+              <li><button className="signout-button" onClick={this.onClickSignOut}>Sign out</button></li>
+            </div>
           </ul>
         </nav>
       );

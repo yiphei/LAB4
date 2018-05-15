@@ -180,14 +180,20 @@ img {
     text-decoration: none;
   }
 
-  .newpost{
-    text-decoration: none;
-    padding: 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    background: rgb(242, 47, 83);
+  .nav-actions{
+    display:flex;
+    flex-direction: row;
+
+    .newpost, .signup-button,.signout-button,.signin-button{
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      background: rgb(242, 47, 83);
+    }
   }
+
 
   .logo{
     font-size: 30px;

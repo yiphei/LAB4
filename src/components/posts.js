@@ -16,6 +16,9 @@ class Posts extends Component {
 
   mapping = () => {
     return this.props.posts.map((post) => {
+      console.log('printing username');
+      console.log(post.username);
+
       if (post.cover_url) {
         return (
           <NavLink to={`/posts/${post._id}`}>
@@ -23,6 +26,7 @@ class Posts extends Component {
               <img src={post.cover_url} alt="a cover" />
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
               <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
+              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.username || '') }} />
             </div>
           </NavLink>
         );
@@ -32,6 +36,7 @@ class Posts extends Component {
             <div className="postDetail" onClick={this.onPostClick}>
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
               <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
+              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.username || '') }} />
             </div>
           </NavLink>
         );

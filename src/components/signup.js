@@ -9,9 +9,14 @@ class SignUp extends Component {
     super(props);
 
     this.state = {
+      username: '',
       email: '',
       password: '',
     };
+  }
+
+  onUsernameChange = (event) => {
+    this.setState({ username: event.target.value });
   }
 
   onEmailChange = (event) => {
@@ -25,7 +30,7 @@ class SignUp extends Component {
   onButtonClick = () => {
     if (this.state.email && this.state.password) {
       const fields = {
-        email: this.state.email, password: this.state.password,
+        username: this.state.username, email: this.state.email, password: this.state.password,
       };
       console.log('New Account Created');
       this.props.signupUser(fields, this.props.history);
@@ -36,6 +41,7 @@ class SignUp extends Component {
     return (
       <div className="newpost-section">
         <h1>Create a new account</h1>
+        <input onChange={this.onUsernameChange} value={this.state.username} placeholder="username" />
         <input onChange={this.onEmailChange} value={this.state.title} placeholder="email" />
         <input onChange={this.onPasswChange} value={this.state.content} placeholder="password" />
         <button onClick={this.onButtonClick}>Sign up</button>

@@ -27,7 +27,6 @@ class SignIn extends Component {
       const fields = {
         email: this.state.email, password: this.state.password,
       };
-      console.log('here');
       this.props.signinUser(fields, this.props.history);
     }
   }
