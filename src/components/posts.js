@@ -26,7 +26,7 @@ class Posts extends Component {
               <img src={post.cover_url} alt="a cover" />
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
               <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
-              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.username || '') }} />
+              <div className="post-author">by {post.username}</div>
             </div>
           </NavLink>
         );
@@ -36,7 +36,7 @@ class Posts extends Component {
             <div className="postDetail" onClick={this.onPostClick}>
               <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(post.title || '') }} />
               <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.tags || '') }} />
-              <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(post.username || '') }} />
+              <div className="post-author">by {post.username}</div>
             </div>
           </NavLink>
         );

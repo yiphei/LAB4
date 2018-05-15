@@ -77,6 +77,7 @@ class Post extends Component {
             <div className="post-title" dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />
             <div className="post-content" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
             <div className="post-tags" dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />
+            <div className="post-author">by {this.props.post.username}</div>
           </div>
         </div>
       );
