@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
-// const ROOT_URL = 'https://lab4cs52.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://lab4cs52.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 
 // // keys for actiontypes
 export const ActionTypes = {
