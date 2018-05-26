@@ -24,6 +24,7 @@ export function updatePost(id, fields) {
     // do something with response.data  (some json)
 
       console.log(response);
+
       dispatch({
         type: ActionTypes.FETCH_POST,
         payload: fields, // i put fields here instead of const updated because the backend does not return the updated post
