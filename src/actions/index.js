@@ -22,6 +22,7 @@ export function updatePost(id, fields) {
   return (dispatch) => {
     axios.put(`${ROOT_URL}/posts/${id}`, fields, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
     // do something with response.data  (some json)
+
       console.log(response);
       dispatch({
         type: ActionTypes.FETCH_POST,
