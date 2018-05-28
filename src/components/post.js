@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { fetchPost, deletePost, updatePost } from '../actions/index';
+import { uploadImage } from '../actions/s3';
 
 
 class Post extends Component {
@@ -15,6 +16,7 @@ class Post extends Component {
       content: this.props.post.content,
       tags: this.props.post.tags,
       coverURL: this.props.post.cover_url,
+      preview: '',
     };
   }
 
@@ -29,10 +31,21 @@ class Post extends Component {
   onUpdateClick = () => {
     console.log('updated');
     this.setState({ isEditing: false });
-    const fields = {
-      title: this.state.title, tags: this.state.tags, content: this.state.content, cover_url: this.state.coverURL,
-    };
-    this.props.updatePost(this.props.match.params.postID, fields);
+
+    if (this.state.file) {
+      uploadImage(this.state.file).then((url) => {
+        // use url for content_url and
+        // either run your createPost actionCreator
+        // or your updatePost actionCreator
+        const fields = {
+          title: this.state.title, tags: this.state.tags, content: this.state.content, cover_url: url,
+        };
+        this.props.updatePost(this.props.match.params.postID, fields);
+      }).catch((error) => {
+        // handle error
+        console.log('error');
+      });
+    }
   }
 
   onEditClick = () => {
@@ -43,6 +56,16 @@ class Post extends Component {
       tags: this.props.post.tags,
       coverURL: this.props.post.cover_url,
     });
+  }
+
+  onImageUpload = (event) => {
+    const file = event.target.files[0];
+    // Handle null file
+    // Get url of the file and set it to the src of preview
+
+    if (file) {
+      this.setState({ preview: window.URL.createObjectURL(file), file });
+    }
   }
 
   onTitleChange = (event) => {
@@ -96,6 +119,8 @@ class Post extends Component {
             <input className="edit-element" onChange={this.onTitleChange} value={this.state.title} />
             <textarea name="Text1" cols="40" rows="5" className="edit-element" onChange={this.onContentChange} value={this.state.content} />
             <input className="edit-element" onChange={this.onTagsChange} value={this.state.tags} />
+            <img id="preview" alt="preview" src={this.state.preview} />
+            <input type="file" name="coverImage" onChange={this.onImageUpload} />
           </div>
         </div>
       );

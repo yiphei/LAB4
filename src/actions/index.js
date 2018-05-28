@@ -60,7 +60,7 @@ export function createPost(fields, history) {
       });
     }).catch((error) => {
       // hit an error do something else!
-      console.log('error');
+      console.log('error in CreatePost Index.js');
       dispatch({
         type: ActionTypes.CREATE_POST,
         payload: null,
