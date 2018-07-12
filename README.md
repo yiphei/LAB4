@@ -9,11 +9,11 @@ It also has full authentication features so that only signed in users can create
 
 ### Client
 
-At the home routing, the posts component is displayed. If you click on add post, you get routed to the newpost component. If you click on an individual post, you get routed to the post/:postID component where postID is the unique ID of the post you clicked.
+- At the home routing, the posts component is displayed. If you click on add post, you get routed to the newpost component. If you click on an individual post, you get routed to the post/:postID component where postID is the unique ID of the post you clicked.
 
-Also, it has full authentication features: signin, signout, singup. Also, only signedin users can create/edit/delete posts.
+- it has full authentication features: signin, signout, singup. Also, only signedin users can create/edit/delete posts.
 
-When you create a new post, there is an input validation for the title. Therefore, if the title input is empty, then you cannot create a new post. You must have a title in order to create a new post.
+- When you create a new post, there is an input validation for the title. Therefore, if the title input is empty, then you cannot create a new post. You must have a title in order to create a new post.
 
 
 **Client link**: notedapp.surge.sh
