@@ -9,6 +9,12 @@ Also, I added all authentication features: signin, signout, singup. Also, only s
 Everything works according to the lab requirements.
 
 
+notedapp.surge.sh
+
+
+https://lab4cs52.herokuapp.com
+
+
 ##extra credit
 
 When you create a new post, there is an input validation for the title. Therefore, if the title input is empty, then you cannot create a new post. You must have a title in order to create a new post.
